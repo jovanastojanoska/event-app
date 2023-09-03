@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+    letter-spacing: 0.03em;
+  }
+ 
+  html,
+  body {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100vw;
+    
+  }
+  #app{
+    height: 100vh;
+  }

@@ -1,0 +1,54 @@
+//MEDIA QUERIES
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+      @media (max-width: 25rem) {
+        @content;
+      }
+    }
+    @if $breakpoint == phoneMedium {
+      @media (max-width: 35.875rem) {
+        @content;
+      }
+    }
+    @if $breakpoint == phone670 {
+      @media (max-width: 41.875rem) {
+        @content;
+      }
+    }
+    @if $breakpoint == tablet {
+      @media (max-width: 47.938rem) {
+        @content;
+      }
+    } 
+    @if $breakpoint == aboveTablet {
+      @media (min-width: 47.938rem) {
+        @content;
+      }
+    } 
+   
+    @if $breakpoint == desktop1180 {
+      @media (max-width: 73.75rem) {
+        @content;
+      }
+    }
+    @if $breakpoint == desktop1080{
+      @media (min-width: 67.5rem){
+        @content;
+      }
+    }
+  
+    @if $breakpoint == desktop1200 {
+      @media (max-width: 75rem) {
+        @content;
+      }
+    }
+   
+    @if $breakpoint == desktop1440 {
+      @media (max-width: 90rem) {
+        @content;
+      }
+    }
+    
+  }
+  

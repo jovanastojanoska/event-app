@@ -1,18 +1,20 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <EventsList v-if="isAuthenticated"></EventsList>
+    <div v-else>ndandnasnas</div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+<script setup>
+import { ref, onMounted } from "vue";
+const isAuthenticated = ref(false);
 
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+onMounted(() => {
+    let localStorageUser = JSON.parse(localStorage.getItem('user'));
+    if (localStorageUser) {
+        isAuthenticated.value = true;
+    }
+
+})
+import EventsList from './EventsList.vue';
+
+
 </script>

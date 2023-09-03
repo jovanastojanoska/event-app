@@ -1,0 +1,41 @@
+button, a {
+  padding: 1rem;
+  height: 3.9rem;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+  border: 0 none;
+  border-radius: 0.6rem;
+  background-color: $color-black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 130%;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $color-grey;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &.is-invalid {
+    background-color: $color-red;
+    &:hover {
+      background-color: $color-red;
+    }
+  }
+}
+.edit{
+    background-color: $color-primary;
+   
+}
+.delete{
+    background-color: $color-red;
+    
+}
+

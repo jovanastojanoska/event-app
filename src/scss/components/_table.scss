@@ -1,0 +1,43 @@
+.table {
+  margin: 4rem 0;
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  border: none;
+
+  caption {
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 100%;
+    color: $color-black;
+  }
+
+  .table-row {
+    display: table-row;
+    width: 100%;
+    border-bottom: 1px solid $color-grey;
+    th {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 100%;
+      color: $color-black;
+      padding: 1.5rem ;
+      text-align: center;
+      display: table-cell;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .table-data {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 100%;
+      color: $color-black;
+      padding: 1.5rem ;
+     
+      display: table-cell;
+      text-align: left;
+      vertical-align: middle;
+    }
+  }
+}

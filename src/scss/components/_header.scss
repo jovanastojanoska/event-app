@@ -1,0 +1,26 @@
+header {
+  nav {
+    background-color: $color-pale-blue;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    .logo {
+      background: none;
+      img {
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+    .header-menu {
+      display: flex;
+      gap: 1rem;
+      a {
+        width: auto;
+        padding: 1rem;
+        background-color: $color-green;
+        color: $color-grey;
+        border-radius: 0.6rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+.input-component {
+    display: flex;
+    flex-flow: column-reverse;
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+
+    input {
+      width: 100%;
+      height: 4rem;
+      border: none;
+      border-bottom: 0.1rem solid $color-black;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 22px;
+      color: $color-black;
+      padding: 1rem;
+      outline: none;
+      background-color: transparent;
+  
+      &:focus,
+      &:hover {
+        cursor: pointer;
+        outline: none;
+        border-bottom: 0.01rem solid $color-black;
+        border-radius: 0;
+      }
+    }
+  
+    label {
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 22px;
+      height: 17px;
+      color: $color-black;
+     
+    }
+    &.is-invalid{
+        input{
+            border: 1px solid $color-red;
+        }
+        label{
+            color: $color-red;
+        }
+    }
+  
+    input:placeholder-shown + label {
+      transform: translate(0, 1.75rem) scale(1);
+    }
+  
+    input:focus + label {
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 17px;
+     
+    }
+  
+    ::-webkit-input-placeholder {
+      opacity: 0;
+      transition: inherit;
+    }
+    input:not(:placeholder-shown) + label {
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 17px;
+      color: $color-black;
+    }
+  
+    input:not(:placeholder-shown) + label,
+    input:focus + label {
+      transform: translate(0, 0) scale(1);
+    }
+    label,
+    input {
+      transition: all 0.2s;
+      touch-action: manipulation;
+    }
+  }

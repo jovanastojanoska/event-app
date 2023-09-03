@@ -1,0 +1,393 @@
+@import "../abstracts/variables";
+
+.datetime-picker {
+  position: relative;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  color: #333;
+  * {
+    box-sizing: border-box;
+  }
+  .wrapper {
+    position: absolute;
+    width: 100vw;
+
+    .picker-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 94%;
+      margin: 0 auto;
+      z-index: 1000;
+      // margin-top: 4px;
+      background-color: #fff;
+      box-shadow: 0 0 6px #ccc;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      text-align: center;
+      font-size: 13px;
+      min-width: 27rem;
+    }
+
+    tr {
+      border: 0 none;
+    }
+
+    th,
+    td {
+      user-select: none;
+      width: 3.7px;
+      height: 3.7px;
+      padding: 0;
+      border: 0 none;
+      line-height: 30px;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    td {
+      cursor: pointer;
+    }
+
+    td:hover {
+      background-color: #f0f0f0;
+    }
+
+    td.date-pass,
+    td.date-future {
+      color: #aaa;
+    }
+
+    td.date-active {
+      background-color: #ececec;
+      color: $color-primary;
+    }
+
+    td.date-current {
+      font-weight: bold;
+    }
+
+    .date-head {
+      background-color: #1a2c51;
+      text-align: center;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .date-days {
+      color: $color-primary;
+      font-size: 14px;
+    }
+
+    .show-year {
+      display: inline-block;
+      min-width: 62px;
+      vertical-align: middle;
+      font-size: 1.5rem;
+    }
+
+    .show-month {
+      display: inline-block;
+      min-width: 28px;
+      vertical-align: middle;
+      font-size: 1.5rem;
+    }
+
+    .btn-prev,
+    .btn-next {
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+      vertical-align: middle;
+      height: 100%;
+      img {
+        width: 1rem;
+        height: 1.4rem;
+        margin: 0;
+      }
+    }
+
+    .btn-prev:hover,
+    .btn-next:hover {
+      background: $color-pale-blue;
+    }
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .datetime-picker {
+    .wrapper {
+      max-width: 45.5rem;
+    }
+  }
+}
+
+.calendar-component {
+  position: relative;
+  display: flex;
+  width: 100%;
+
+  &.is-invalid {
+    .input-component {
+      input {
+        border-bottom: 1px solid $color-red;
+
+        &:focus {
+          border: 1px solid $color-red;
+        }
+      }
+      label,
+      input:focus + label,
+      input:not(:placeholder-shown) + label {
+        color: $color-red;
+      }
+    }
+    .calendar-container {
+      border: 1px solid $color-red;
+      border-top: none 0;
+    }
+  }
+
+  &.calendar-component-opened {
+    .input-component {
+      input {
+        border-radius: 8px 8px 0 0;
+      }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    .calendar-container {
+      border-color: $color-primary;
+    }
+  }
+
+  .calendar-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    background-color: $color-white;
+    border: 1px solid $color-grey;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    position: absolute;
+    top: 57px;
+    .calendar-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      width: 100%;
+      gap: 20px;
+      .date-text {
+        width: 150px;
+        text-align: center;
+      }
+    }
+    .calendar-days {
+      display: flex;
+      width: 100%;
+      border-top: 1px solid $color-grey;
+      height: 49.5px;
+
+      &.day-names {
+        border-top: none;
+      }
+
+      .calendar-day {
+        width: calc(100% / 7);
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-right: 1px solid $color-grey;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 12px;
+        color: $color-black;
+        &:nth-child(7n) {
+          border-right: none;
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: $color-primary;
+          color: $color-white;
+        }
+        &.date-pass,
+        &.date-future {
+          color: $color-grey;
+          &:hover {
+            color: $color-white;
+          }
+        }
+
+        &.date-active,
+        &.date-current {
+          background-color: $color-green;
+          color: $color-white;
+          &:hover {
+            background-color: $color-primary;
+            color: $color-white;
+          }
+        }
+
+        &.day-name {
+          border-right: none;
+          &:hover {
+            cursor: default;
+            background-color: $color-white;
+            color: $color-black;
+          }
+        }
+      }
+    }
+  }
+}
+
+.dropdown-picker {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+  z-index: 3;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  transition: all 0.2s ease-in-out;
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    left: -99999px;
+  }
+  &.dropdown-upside-down {
+    top: auto;
+    bottom: 0;
+    flex-direction: column-reverse;
+
+    ul {
+      border-radius: 0.4rem 0.4rem 0 0;
+    }
+  }
+
+  &.is-invalid {
+    ::-webkit-scrollbar-thumb {
+      background-color: $color-red;
+    }
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 10px 10px $color-red;
+    }
+    .title-list {
+      background-color: $color-red;
+    }
+    > ul {
+      border: 0.1rem solid $color-red;
+    }
+  }
+
+  ::-webkit-scrollbar-track {
+    border: 3.5px solid transparent;
+    box-shadow: inset 0 0 10px 10px $color-light-grey;
+  }
+
+  ::-webkit-scrollbar {
+    background-color: transparent;
+    border: 4px solid transparent;
+    width: 8px;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $color-grey;
+    border-radius: 10px;
+    border: solid 3px transparent;
+  }
+  .title-list {
+    position: sticky;
+    top: 0;
+    height: 3.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-black;
+    color: $color-white;
+    font-size: 14px;
+    line-height: 100%;
+    border-bottom: 0 none;
+    z-index: 3;
+  }
+
+  > ul {
+    border: 0.1rem solid $color-grey;
+    border-radius: 0 0 0.4rem 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 40vh;
+    overflow-y: auto;
+    padding: 0 1rem;
+
+    li {
+      height: 3.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-white;
+      width: 100%;
+      border-bottom: 0.1rem solid $color-grey;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.picked-value {
+        background-color: $color-grey;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        line-height: 100%;
+        color: $color-black;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: $color-light-grey;
+      }
+    }
+  }
+}
+
+.time-picker-component {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .time-picker-dropdowns {
+    display: flex;
+    .time-picker-dropdown {
+      width: 50%;
+      position: relative;
+    }
+  }
+}
