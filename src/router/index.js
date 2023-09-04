@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { useAuthStore } from '../store';
 import HomeView from "@/views/HomeView.vue";
 
-export default createRouter({
+
+const router =  createRouter({
   history: createWebHistory(),
   routes: [
     {
@@ -33,4 +35,20 @@ export default createRouter({
       component: () => import("@/views/AddEvent.vue"),
     },
   ],
+  
 });
+
+router.beforeEach((to, from, next) => {
+  
+  const authStore = useAuthStore();
+  const isLoggedIn = authStore.isLoggedIn;
+
+  if (to.meta.requiresAuth && !isLoggedIn) {
+  
+    next('/login');
+  } else {
+    next();
+  }
+});
+
+export default router;

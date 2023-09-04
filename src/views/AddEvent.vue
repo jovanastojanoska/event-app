@@ -19,11 +19,11 @@
         <TimePicker v-model="event.end_time" :timeFrom="startOfDay" :minute-interval="5" :timeTo="endOfDay"
             :placeHolder="'End Time'" :class="{ 'is-invalid': v$.end_time.$error }">
         </TimePicker>
-        <button type="submit" @click="addEvent" v-if="!route.params.id"> Add Event</button>
-        <button v-else @click="editEvent"> Edit Event</button>
+        <button type="submit" @click="addEvent" v-if="!route.params.id" class="submit"> Add Event</button>
+        <button v-else @click="editEvent" class="edit"> Edit Event</button>
 
 
-        <div class="success-message">
+        <div class="success-message" v-if="successMessage">
             {{ successMessage }}
         </div>
 
@@ -33,7 +33,7 @@
 
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useVuelidate } from '@vuelidate/core'
 import { required } from "@vuelidate/validators";
 import { useRoute } from "vue-router";
@@ -41,7 +41,7 @@ import InputComponent from '@/components/InputComponent.vue';
 import TimePicker from "@/components/TimePicker.vue";
 import DatePicker from "@/components/DatePicker.vue";
 import { v4 as uuidv4 } from 'uuid';
-import router from "@/router";
+
 
 const event = ref({ start_time: {}, end_time: {} })
 const events = ref([]);
@@ -49,6 +49,7 @@ const startOfDay = ref(6);
 const endOfDay = ref(22);
 const successMessage = ref();
 const route = useRoute();
+const indexOfEditElem = ref(null)
 
 if (route.params.id) {
     let events = JSON.parse(localStorage.getItem("events"));
@@ -85,20 +86,18 @@ const v$ = useVuelidate(rules, event.value);
 
 
 function addEvent() {
+
     v$.value.$touch();
 
     if (v$.value.$invalid) {
         return;
     }
-
-
     event.value.id = uuidv4();
     events.value.push(event.value);
+    if (JSON.parse(localStorage.getItem("events"))) {
+        events.value = events.value.concat(JSON.parse(localStorage.getItem("events")));
+    }
 
-    // Concatenate the events from local storage and update events.value
-    events.value = events.value.concat(JSON.parse(localStorage.getItem("events")));
-
-    // Store the updated events array in local storage
     localStorage.setItem("events", JSON.stringify(events.value));
 
     successMessage.value = 'event added successfully!';
@@ -106,17 +105,31 @@ function addEvent() {
     setTimeout(() => {
         successMessage.value = null;
         event.value = {};
-    }, 200)
+    }, 1000)
 
 }
 
 function editEvent() {
-    let indexOfEditElem = events.value.findIndex(element => element.id === router.params.id);
-    events.value[indexOfEditElem] = event.value;
+    events.value[indexOfEditElem.value] = event.value;
     localStorage.setItem("events", JSON.stringify(events.value));
     successMessage.value = 'event edited successfully!';
+    setTimeout(() => {
+        successMessage.value = null;
+        event.value = {};
+    }, 1000)
+
 }
 
+
+onMounted(() => {
+    if (route.params.id) {
+        events.value = JSON.parse(localStorage.getItem("events"));
+        indexOfEditElem.value = events.value.findIndex(object => {
+            return object.id === route.params.id;
+        });
+
+    }
+})
 
 
 </script>

@@ -59,7 +59,7 @@ const minutes = computed(() => {
 const selectedHour = computed({
   get() {
     return props.modelValue?.hour ?? "--";
-    // return props.modelValue?.hour ?? formatValue(props.timeFrom);
+
   },
   set(value) {
     emit("update:modelValue", {
@@ -71,7 +71,7 @@ const selectedHour = computed({
 
 const selectedMinute = computed({
   get: () => props.modelValue?.minute ?? "--",
-  // get: () => props.modelValue?.minute ?? formatValue(0),
+
   set: (value) => {
     emit("update:modelValue", {
       hour: props.modelValue?.hour,
@@ -104,7 +104,7 @@ function openDropdown() {
 }
 
 function handleClickOutside(event) {
-   if ( parentComponent.value && !parentComponent.value.contains(event.target)) {
+  if (parentComponent.value && !parentComponent.value.contains(event.target)) {
     showDropdown.value = false;
   }
 }
@@ -114,92 +114,3 @@ function handleClickOutside(event) {
 
 </script>
 
-<style>
-.time-picker {
-  display: inline-block;
-  position: relative;
-  font-size: 1em;
-  font-family: sans-serif;
-  vertical-align: middle;
-}
-
-.time-picker * {
-  box-sizing: border-box;
-}
-
-.time-picker .time-picker-overlay {
-  z-index: 2;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.time-picker .dropdown {
-  position: absolute;
-  z-index: 5;
-  /* top: 33px; */
-  left: 0;
-  background: #fff;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
-  width: 100%;
-  height: 27vh;
-  font-weight: normal;
-  z-index: 201;
-}
-
-.time-picker .dropdown .select-list {
-  width: 100%;
-  height: 27vh;
-  overflow: hidden;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: stretch;
-  justify-content: space-between;
-  z-index: 200;
-}
-
-.time-picker .dropdown ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  flex: 1;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.time-picker .dropdown ul.minutes,
-.time-picker .dropdown ul.seconds,
-.time-picker .dropdown ul.apms {
-  border-left: 1px solid #fff;
-}
-
-.time-picker .dropdown ul li {
-  text-align: center;
-  padding: 0.3em 0;
-  color: #161616;
-  justify-content: center;
-  font-size: 1.5rem;
-}
-
-.time-picker .dropdown ul li:not(.hint):hover {
-  background: rgba(0, 0, 0, 0.08);
-  color: #161616;
-  cursor: pointer;
-}
-
-.time-picker .dropdown ul li.active,
-.time-picker .dropdown ul li.active:hover {
-  background-color: #002E2C;
-  color: #fff;
-}
-
-.time-picker .dropdown .hint {
-  background: #002E2C;
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-</style>

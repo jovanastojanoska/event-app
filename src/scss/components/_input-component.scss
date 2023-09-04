@@ -14,8 +14,8 @@
       -webkit-appearance: none;
       appearance: none;
       font-weight: 300;
-      font-size: 15px;
-      line-height: 22px;
+      font-size: 1.5rem;
+      line-height: 2.2rem;
       color: $color-black;
       padding: 1rem;
       outline: none;
@@ -32,15 +32,15 @@
   
     label {
       font-weight: 300;
-      font-size: 15px;
-      line-height: 22px;
-      height: 17px;
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+      height: 1.7rem;
       color: $color-black;
      
     }
     &.is-invalid{
         input{
-            border: 1px solid $color-red;
+            border-bottom: 0.1rem solid $color-red;
         }
         label{
             color: $color-red;
@@ -53,8 +53,8 @@
   
     input:focus + label {
       font-weight: 300;
-      font-size: 12px;
-      line-height: 17px;
+      font-size: 1.2rem;
+      line-height: 1.7rem;
      
     }
   
@@ -64,8 +64,8 @@
     }
     input:not(:placeholder-shown) + label {
       font-weight: 300;
-      font-size: 12px;
-      line-height: 17px;
+      font-size: 1.2rem;
+      line-height: 1.7rem;
       color: $color-black;
     }
   
@@ -78,4 +78,18 @@
       transition: all 0.2s;
       touch-action: manipulation;
     }
+  }
+
+  .search{
+    input{
+      
+    }
+  }
+  .no-events-available{
+    font-size: 2.8rem;
+    text-align: center;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }

@@ -17,10 +17,20 @@ header {
       a {
         width: auto;
         padding: 1rem;
-        background-color: $color-green;
-        color: $color-grey;
+        color: $color-white;
         border-radius: 0.6rem;
       }
     }
   }
+}
+
+.hero{
+  height: 90vh;
+  width: 100vw;
+ margin: 0 auto;
+  background: url("@/assets/infograph.jpg") top center no-repeat;
+  background-size: contain; /* Makes the image cover the entire element */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center center;
+  
 }

@@ -5,7 +5,8 @@
         <InputComponent  @click="openCalendar" v-model="valueString" :place-holder="placeHolder" />
         <div class="calendar-container" v-if="show">
             <div class="calendar-header">
-                <div class="arrow arrow-left" @click="monthClick(-1)"></div>
+                <div class="arrow arrow-left" @click="monthClick(-1)">
+                </div>
                 <p class="list-text-bold">{{ months[now.month - 1] }} {{ now.year }}</p>
 
                 <div class="arrow arrow-right" @click="monthClick(1)"></div>
@@ -40,12 +41,14 @@ const props = defineProps({
 })
 
 
+
 const show = ref(false);
 const now = ref(MyDateTime.locationTime());
 const date = ref([]);
 const months = ref(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
 const days = ref(["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]);
-const datepicker = ref()
+const datepicker = ref();
+console.log( new Date(), now.value)
 
 const value = computed({
     get() {

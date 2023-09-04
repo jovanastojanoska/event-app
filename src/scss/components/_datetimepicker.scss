@@ -20,7 +20,6 @@
       width: 94%;
       margin: 0 auto;
       z-index: 1000;
-      // margin-top: 4px;
       background-color: #fff;
       box-shadow: 0 0 6px #ccc;
     }
@@ -75,12 +74,12 @@
       background-color: #1a2c51;
       text-align: center;
       color: #fff;
-      font-size: 14px;
+      font-size: 1.4rem;
     }
 
     .date-days {
       color: $color-primary;
-      font-size: 14px;
+      font-size: 1.4rem;
     }
 
     .show-year {
@@ -136,10 +135,10 @@
   &.is-invalid {
     .input-component {
       input {
-        border-bottom: 1px solid $color-red;
+        border-bottom: 0.1rem solid $color-red;
 
         &:focus {
-          border: 1px solid $color-red;
+          border: 0.1rem solid $color-red;
         }
       }
       label,
@@ -149,7 +148,7 @@
       }
     }
     .calendar-container {
-      border: 1px solid $color-red;
+      border: 0.1rem solid $color-red;
       border-top: none 0;
     }
   }
@@ -175,7 +174,7 @@
     flex-direction: column;
     z-index: 10;
     background-color: $color-white;
-    border: 1px solid $color-grey;
+    border: 0.1rem solid $color-light-grey;
     border-top: none;
     border-radius: 0 0 8px 8px;
     position: absolute;
@@ -187,15 +186,15 @@
       padding: 10px;
       width: 100%;
       gap: 20px;
-      .date-text {
-        width: 150px;
-        text-align: center;
-      }
+     p{
+      font-size: 1.5rem;
+     }
+      
     }
     .calendar-days {
       display: flex;
       width: 100%;
-      border-top: 1px solid $color-grey;
+      border-top: 0.1rem solid $color-light-grey;
       height: 49.5px;
 
       &.day-names {
@@ -208,10 +207,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border-right: 1px solid $color-grey;
+        border-right: 0.1rem solid $color-light-grey;
         font-weight: 400;
-        font-size: 12px;
-        line-height: 12px;
+        font-size: 1.2rem;
+        line-height: 1.2rem;
         color: $color-black;
         &:nth-child(7n) {
           border-right: none;
@@ -223,7 +222,7 @@
         }
         &.date-pass,
         &.date-future {
-          color: $color-grey;
+          color: $color-light-grey;
           &:hover {
             color: $color-white;
           }
@@ -297,19 +296,19 @@
   }
 
   ::-webkit-scrollbar-track {
-    border: 3.5px solid transparent;
-    box-shadow: inset 0 0 10px 10px $color-light-grey;
+    border: 0.3rem solid transparent;
+    box-shadow: inset 0 0 1rem 1rem $color-light-grey;
   }
 
   ::-webkit-scrollbar {
     background-color: transparent;
-    border: 4px solid transparent;
-    width: 8px;
+    border: 0.4rem solid transparent;
+    width: 0.8rem;
     background-clip: content-box;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: $color-grey;
+    background-color: $color-light-grey;
     border-radius: 10px;
     border: solid 3px transparent;
   }
@@ -322,14 +321,14 @@
     justify-content: center;
     background-color: $color-black;
     color: $color-white;
-    font-size: 14px;
+    font-size: 1.4rem;
     line-height: 100%;
     border-bottom: 0 none;
     z-index: 3;
   }
 
   > ul {
-    border: 0.1rem solid $color-grey;
+    border: 0.1rem solid $color-light-grey;
     border-radius: 0 0 0.4rem 0.4rem;
     list-style: none;
     margin: 0;
@@ -345,21 +344,21 @@
       justify-content: center;
       background-color: $color-white;
       width: 100%;
-      border-bottom: 0.1rem solid $color-grey;
+      border-bottom: 0.1rem solid $color-light-grey;
 
       &:last-child {
         border-bottom: none;
       }
 
       &.picked-value {
-        background-color: $color-grey;
+        background-color: $color-light-grey;
       }
 
       label {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 14px;
+        font-size: 1.4rem;
         line-height: 100%;
         color: $color-black;
         width: 100%;
@@ -382,6 +381,17 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  &.is-invalid{
+    .input-component{
+      input{
+      border-bottom: 0.1rem solid $color-red;
+      color: $color-red;
+      }
+      label{
+        color: $color-red;
+      }
+    }
+  }
 
   .time-picker-dropdowns {
     display: flex;
